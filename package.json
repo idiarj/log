@@ -1,5 +1,5 @@
 {
-  "name": "logger",
+  "name": "vidi-logger",
   "version": "1.0.0",
   "description": "Proyecto de logger para aplicaciones.",
   "main": "src/logger.js",
