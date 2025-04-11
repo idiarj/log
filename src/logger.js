@@ -1,5 +1,6 @@
 import db, { initDB } from './database.js';
 import { LEVELS } from './levels.js';
+import chalk from 'chalk';
 
 export class Logger {
   constructor() {
@@ -41,7 +42,18 @@ export class Logger {
         if (err) {
           console.error(`[LOGGER ERROR] ${err.message}`);
         } else {
-          console.log(`[${level.toUpperCase()}] ${message}`);
+          const levelColors = {
+            info: chalk.blue,
+            debug: chalk.cyan,
+            warn: chalk.yellow,
+            error: chalk.red
+          };
+          
+          const coloredLevel = levelColors[level]
+            ? levelColors[level](`[${level.toUpperCase()}]`)
+            : `[${level.toUpperCase()}]`;
+          
+          console.log(`${coloredLevel} ${message}`);
         }
       }
     );

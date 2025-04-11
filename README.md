@@ -18,3 +18,26 @@ Un middleware de logging para aplicaciones **Express.js** que registra todas las
 
 ```bash
 npm install vidi-logger
+```
+---
+## Ejemplo de uso 
+```bash
+import express from 'express';
+import { Logger } from 'vidi-logger';
+
+const app = express();
+const logger = new Logger();
+
+app.use(express.json());
+app.use(logger.main()); // Middleware para registrar todas las solicitudes
+
+app.get('/', (req, res) => {
+  logger.info('Ruta principal accedida');
+  res.send('¡Hola desde Express con logger!');
+});
+
+app.listen(3000, () => {
+  logger.info('Servidor iniciado en http://localhost:3000');
+});
+```
+
